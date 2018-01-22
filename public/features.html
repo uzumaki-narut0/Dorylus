@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>features | chessbrain</title>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://use.fontawesome.com/795dd48394.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+    <script src="/js/jquery.js"></script>
+    <style type="text/css">
+    	.col-md-12{
+
+    		padding-top: 30px;
+    		padding-left: 15vw;
+    		padding-right: 15vw;
+    		text-align: justify;
+    	}
+    	.divider{
+    		background-color: black;
+    		width: 10vw;
+    		height: 1px;
+    		margin-bottom: 10px;
+    	}
+    	h1, h2{
+    		margin-bottom: 0;
+
+    	}
+    	h1{
+    		font-size: 64px;
+    		position: absolute;
+    		top:30vh;
+    		text-align: center;
+    		color: #fff;
+    		left: calc(50% - (153px)); 
+    	}
+    	#parallax-part{
+    		background: linear-gradient(135deg,rgba(109,71,217,.92),rgba(71,114,217,.92)),url("data:image/svg+xml;charset=utf-8,%3Csvg id='PatternLayer_2' width='480' height='480' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 480'%3E%3Cstyle%3E.st0{fill:%23a6a6a6}.st1{fill:%23adadad}.st2{fill:%23b8bebe}.st3{fill:%23f4f4f4}.st4{fill:%23dcdce2}.st5{fill:%23bec3c3}.st6{fill:%23cfcfcf}.st7{fill:%23f4f4f4;stroke:%23231f20;stroke-miterlimit:10}%3C/style%3E%3Cpath class='st0' d='M69.2 63.2L0 69.3V25.8L18.5 0h46.7l4 63.2z'/%3E%3Cpath class='st1' d='M165.8 20.6l30 110.6L275.2 7.9 165.8 20.6z'/%3E%3Cpath class='st0' d='M480 25.8v44.8l-32.2 2.6L480 25.8zm0 112.6v17l-88.2-40.2 56-42 32.2 65.2z'/%3E%3Cpath class='st1' d='M405.2 211.2l10.6 108.7-79.3 10 68.7-118.7zM480 169v18.9l-64.2 132 17.4-118.7L480 169zm0 151.5v46.8l-64.2-47.4 64.2.6zm-186.2 37.4l62.7 64.7-74 6.6 11.3-71.3zm-174-101.3l100.7 90 73.3 11.3-174-101.3zm-50.6 67.3l17.3-59.3 29.3 126-46.6-66.7zM69.2 323.9l-4 94L0 367.3v-46.8l69.2 3.4zm114.6 143.3L65.2 417.9l50.6-27.3 68 76.6zM65.2 417.9V480H18.5l46.7-62.1z'/%3E%3Cpath class='st0' d='M12.5 159.9L0 155.4v-17l12.5 21.5z'/%3E%3Cpath class='st1' d='M12.5 159.9L0 187.9V169l12.5-9.1z'/%3E%3Cpath class='st0' d='M308.5 164.6l28 165.3-68.7-126 40.7-39.3zm96.7 46.6l28-10-17.4 118.7-10.6-108.7zM220.5 346.6l62 82.6 11.3-71.3-73.3-11.3z'/%3E%3Cpath class='st0' d='M282.5 429.2l-6.3 50.8h-74.9l81.2-50.8zM69.2 323.9l46.6 66.7-50.6 27.3 4-94zm-56.7-164l56.7 164-4-79.3-52.7-84.7zM276.2 0l-1 7.9-109.4 12.7L201.3 0h74.9z'/%3E%3Cpath class='st0' d='M86.5 264.6l33.3-8-4 134-29.3-126z'/%3E%3Cpath class='st2' d='M293.8 357.9l122-38-59.3 102.7-62.7-64.7z'/%3E%3Cpath class='st3' d='M441.8 429.2l-85.3-6.6 59.3-102.7 26 109.3z'/%3E%3Cpath class='st4' d='M480 367.3v58.2l-38.2 3.7-26-109.3 64.2 47.4z'/%3E%3Cpath class='st5' d='M480 425.5V480h-53.3l15.1-50.8 38.2-3.7z'/%3E%3Cpath class='st4' d='M441.8 429.2L426.7 480h-57.5l-12.7-57.4 85.3 6.6z'/%3E%3Cpath class='st5' d='M369.2 480h-84.1l71.4-57.4 12.7 57.4z'/%3E%3Cpath class='st3' d='M356.5 422.6L285.1 480h-8.9l6.3-50.8 74-6.6zm-74 6.6L201.3 480h-35.9l18.4-12.8 98.7-38z'/%3E%3Cpath class='st2' d='M115.8 390.6l68 76.6 98.7-38-116.7-63.3-50 24.7z'/%3E%3Cpath class='st3' d='M119.8 256.6l-4 134 50-24.7-46-109.3z'/%3E%3Cpath class='st6' d='M220.5 346.6l62 82.6-116.7-63.3-46-109.3 100.7 90z'/%3E%3Cpath class='st2' d='M183.8 467.2L165.4 480H89l-23.8-62.1 118.6 49.3z'/%3E%3Cpath class='st5' d='M89 480H65.2v-62.1L89 480z'/%3E%3Cpath class='st4' d='M65.2 417.9L0 425.5v-58.2l65.2 50.6z'/%3E%3Cpath class='st6' d='M65.2 417.9L18.5 480H9.4l55.8-62.1z'/%3E%3Cpath class='st2' d='M65.2 417.9L9.4 480H0v-54.5l65.2-7.6z'/%3E%3Cpath class='st3' d='M65.2 244.6l54.6 12-33.3 8-17.3 59.3-4-79.3z'/%3E%3Cpath class='st6' d='M12.5 159.9L0 169v-13.6l12.5 4.5z'/%3E%3Cpath class='st3' d='M69.2 323.9L0 320.5V187.9l12.5-28 56.7 164zm267.3 6l-42.7 28 122-38-79.3 10zm143.5-142v132.6l-64.2-.6 64.2-132zm-171.5-23.3l124.7 36.6-28 10-68.7 118.7-28-165.3z'/%3E%3Cpath class='st5' d='M119.8 256.6l216.7 73.3-42.7 28-174-101.3z'/%3E%3Cpath class='st2' d='M267.8 203.9l68.7 126-216.7-73.3 148-52.7zm-255.3-44l107.3 96.7-54.6-12-52.7-84.7z'/%3E%3Cpath class='st6' d='M195.8 131.2l-76 125.4-107.3-96.7 183.3-28.7z'/%3E%3Cpath class='st5' d='M69.2 63.2l-56.7 96.7 183.3-28.7-126.6-68z'/%3E%3Cpath class='st4' d='M69.2 63.2l-56.7 96.7L0 138.4V69.3l69.2-6.1z'/%3E%3Cpath class='st5' d='M103.2 32.6l-34 30.6-4-63.2H89l14.2 32.6z'/%3E%3Cpath class='st4' d='M165.8 20.6l30 110.6-126.6-68 34-30.6 62.6-12z'/%3E%3Cpath class='st3' d='M119.8 256.6l76-125.4 112.7 33.4-40.7 39.3-148 52.7z'/%3E%3Cpath class='st4' d='M391.8 115.2l41.4 86-124.7-36.6 83.3-49.4zM275.2 7.9l33.3 156.7-112.7-33.4L275.2 7.9z'/%3E%3Cpath class='st2' d='M391.8 115.2l-83.3 49.4L275.2 7.9l9.9-7.9h84.1l22.6 115.2z'/%3E%3Cpath class='st6' d='M480 9.9v15.9l-32.2 47.4-56 42L480 9.9z'/%3E%3Cpath class='st2' d='M480 0v9.9l-88.2 105.3L426.7 0H480z'/%3E%3Cpath class='st4' d='M426.7 0l-34.9 115.2L369.2 0h57.5z'/%3E%3Cpath class='st3' d='M285.1 0l-9.9 7.9 1-7.9h8.9zm-83.8 0l-35.5 20.6-62.6 12L165.4 0h35.9z'/%3E%3Cpath class='st6' d='M18.5 0L0 25.8V9.9L9.4 0h9.1z'/%3E%3Cpath class='st2' d='M165.4 0l-62.2 32.6L89 0h76.4zM9.4 0L0 9.9V0h9.4z'/%3E%3Cpath class='st4' d='M480 69.3v69.1l-32.2-65.2 32.2-3.9z'/%3E%3Cpath class='st6' d='M480 155.4V169l-46.8 32.2-41.4-86 88.2 40.2z'/%3E%3C/svg%3E");
+    		/*background-size: cover;*/
+    		background-attachment: fixed;
+    		height: 75vh;
+    		/*padding-right: -15vw;*/
+    	}
+    </style>
+</head>
+<body>
+	<div class="container-fluid">
+		<div id="parallax-part" class="row">
+			<h1>ChessBrain</h1>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				
+				<div class="divider"></div>
+				<p>Machine learning is one of the fastest-growing and most exciting fields out there, and deep learning represents its true bleeding edge. ChessBrain ​is a web application that leverages deep learning and websockets to accomplish a complete solution for chess enthusiasts. What we are going to accomplish in this project is to build a web platform which will be able to load a game of chess from any given image that might contain a still frame of a chess board. This platform will enable players to set up a chess board without the hassle of moving the pieces and setting it up yourself. Platform will feature a chess engine for a solo play and will also support multiplayer.
+				</p>
+				<br>
+
+				<h2>Work done so far</h2>
+				<div class="divider"></div>
+				<ul type="disc">
+					<li>
+						We have utilized the concepts of web scraping and used python (BeautifulSoup) to generate datasets by scraping the chessboard images from chess.com, lichess.com and some other websites. To dissect a complete chessboard into individual chess pieces, we have used python imaging library PIL.
+					</li>
+					<br>
+					<li>
+						We made use of tensorflow and the concept of hough transform to identify chessboard in any image. Since we are only considering digital images of chessboard from any particular website, we operate on the base assumption that the chessboard will be aligned with the image. We used horizontal and vertical gradient to identify all horizontal and vertical lines in the image and then isolated the lines associated with the chessboard. After identifying the chessboard we split the chessboard into 64 squares for further processing.
+					</li>
+					<br>
+					<li>
+						We have created a image classifier with 12 different classifications for chess pieces of both colors. It is created by training a Convolutional Neural Network with around 50 images of each possible classification. Right now, the accuracy of classification is around 93%. The implementation of CNN is done in Python and we are using Tensorflow for doing fast computations. The model is being trained on cloud instead of local machines as our local machines don’t have enough processing power and training a ConvNet requires quite good processing power.
+					</li>
+
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<script src="/js/popper.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+</body>
+</html>

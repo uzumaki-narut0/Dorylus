@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Developers @ TEAM 16</title>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://use.fontawesome.com/795dd48394.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+    <script src="/js/jquery.js"></script>
+    <style type="text/css">
+    	html,body,.container-fluid{
+			height: 100%;
+			/*margin: 0;*/
+			/*padding: 0;*/
+		}
+		.first-screen{
+			/*height: 100%;*/
+			/*background-color: #f69679;*/
+			background: linear-gradient(135deg,#2c3e50,#48647c);
+		}
+		.second-screen{
+			background-color: #09f;
+
+		}
+		.third-screen{
+			background-color: #c48919;
+		}
+		.fourth-screen{
+			background-color: #c3c2b9;
+		}
+
+		/*body{
+			position: relative;
+		}*/
+		#pagination-bullets{
+			margin: 0;
+			margin-right: 3%;
+			/*padding: 0;*/
+			position: fixed;
+			bottom: 0;
+			top:37.5%;
+			z-index: 100;
+			height:25%;
+			right:0;
+			list-style: none;
+			/*background-color: #000;*/
+		}
+		#pagination-bullets li{
+			background-color: #000;
+			margin-bottom:20px;
+			width:16px;
+			height:16px;
+			border-radius: 50%;
+		}
+    	#profile-info span{
+    		height:100%;
+    		width:5px;
+    		background-color: #d24136;
+    		float: right;
+    		margin-right: -15px;
+    	}
+    	#profile-info{
+    		height: 100%;
+    	}
+    	#profile-pic,#profile-pic-2, #profile-pic-3{
+    		background-image: url('/img/swapnil.jpg');
+    		filter: grayscale(100%);
+    		height: 100%;
+    		background-size: cover;
+    	}
+    	#profile-pic-2{
+    		background-image: url('/img/singhal.jpg');
+    	}
+    	#profile-pic-3{
+    		background-image: url('img/devesh.jpg');
+    	}
+    	#profile-pic div, #profile-pic-2 div, #profile-pic-3 div{
+    		color: white;
+    		left:5vw;
+    		font-size: 36px;
+    		font-style: 'Roboto', sans-serif;
+    	}
+    	#profile-pic-3 div{
+    		color: black;
+    	}
+    	#profile-pic-3 span{
+    		color: black;
+    	}
+    	#profile-pic-3 .divider{
+    		background-color: black;
+    	}
+    	#profile-name{
+    		position: absolute;
+    		bottom: 20vh;
+    	}
+    	.divider{
+    		position: absolute;
+    		bottom: 20vh;
+    		width: 30vh;
+    		background-color: #fff;
+    		height: 1px;
+    		margin-left: 2px;
+    	}
+    	#profile-alias{
+    		position: absolute;
+    		font-size: 24px !important;
+    		bottom: calc(20vh - 32px);
+    	}
+    	#abt-swapnil,#abt-singhal{
+    		margin-top: 20vh;
+    		line-height: 2rem;
+    		padding: 0 40px;
+    		color: #fff;
+    		font-weight: bold;
+    		padding-right: 55px;
+    		text-align: justify;
+    		font-family: 'Roboto',sans-serif;
+    		font-size: 20px;
+    	}
+    	h1{
+    		font-family:'amatic',sans-serif;
+    		font-size: 64px;
+    		padding-left: 40px;
+    		padding-top: 20px;
+    	}
+    	#element-support{
+    		top: 70vh;
+    		/*font-family: 'Roboto', sans-serif;*/
+    		font-size: 48px;
+    		/*color:rgba(109,71,217,.92);*/
+    		/*background-color:rgba(0,0,0,0.5); */
+    	}
+    	#github-icon,#stack-icon,#linked-icon{
+    		position: absolute;
+    		font-size: 24px !important;
+    		bottom: 8vh;
+    		color: #fff;	
+    		left:5.2vw;
+    	}
+    	#stack-icon{
+    		left:8.2vw;
+    	}
+    	#linked-icon{
+    		left:11.2vw;
+    	}
+    	.first-screen h1, .first-screen h2{
+    		font-family: 'Josefin Sans', sans-serif;
+    		position: absolute;
+    		top:30vh;
+
+    		width: calc(100% - 30px);
+    		color: #fff;
+    		text-align: center;
+    		font-size: 96px;
+    	}
+    	.row, .col-md-6{
+    		height: 100%;
+    	}
+
+    	
+    </style>
+
+</head>
+<body>
+	
+	<div class="container-fluid first-screen">
+		<div class="row">
+			<div class="col-md-12">
+				<ul id="pagination-bullets">
+						<li id="screen1-link" ></li>
+						<li id="screen2-link"></li>
+						<li id="screen3-link"></li>
+						<li id="screen4-link"></li>
+				</ul>
+				<h1 class="element"></h1>
+				<h2 id="element-support">
+					MEET THE SQUAD
+					<br>
+					<!-- <br> -->
+					<img id="down-arrow" src="/img/arrow2.png"/>
+				</h2>
+			</div>
+		</div>
+		
+	</div>
+	<div class="container-fluid second-screen">
+		<div class="row">
+			<div id="profile-info" class="col-md-6">
+				<span>
+				</span>
+				<h1>Kon'nichiwa!</h1>
+				<div id="abt-swapnil">
+					
+					 This is Swapnil,  a pre final year undergraduate student of Information Technology(IT) at Indian Institute Of Information Technology, Sonepat. I am someone who loves to innovate and develop softwares.I Have a sound knowledge of C++, Java, Python , Javascript and have proven my skills by developing many projects. When I'm not coding or pushing pixels, you'll find me watching anime or playing chess. 
+				</div>
+			</div>
+			<div id="profile-pic" class="col-md-6">
+				<div id="profile-name">
+					KUMAR SWAPNIL
+				</div>
+				<div class="divider">
+				</div>
+				<div id="profile-alias">
+					@uzumaki-narut0
+				</div>
+				<span id="github-icon">
+					<i class="fa fa-github" aria-hidden="true"></i>
+				</span>
+				<span id="stack-icon">
+					<i class="fa fa-stack-overflow" aria-hidden="true"></i>
+				</span>
+				<span id="linked-icon">
+					<i class="fa fa-linkedin" aria-hidden="true"></i>
+				</span>
+				
+
+			</div>
+		</div>
+	</div>
+	<div class="container-fluid third-screen">
+		<div class="row">
+			
+			<div id="profile-pic-2" class="col-md-6">
+				<div id="profile-name">
+					SHUBHAM SINGHAL
+				</div>
+				<div class="divider">
+				</div>
+				<div id="profile-alias">
+					@torque
+				</div>
+				<span id="github-icon">
+					<i class="fa fa-github" aria-hidden="true"></i>
+				</span>
+				<span id="stack-icon">
+					<i class="fa fa-stack-overflow" aria-hidden="true"></i>
+				</span>
+				<span id="linked-icon">
+					<i class="fa fa-linkedin" aria-hidden="true"></i>
+				</span>
+
+			</div>
+			<div id="profile-info" class="col-md-6">
+				<span>
+				</span>
+				<h1>Hola! My name is Shubham Singhal..</h1>
+				<div id="abt-singhal">
+					 I was born and raised in Jaipur.
+					Currently I am a prefinal year undergraduate student of Information Technology (IT) at National Institute of Technology, Kurukshetra.
+
+					I am passionate about learning new stuff. I have been invloved in competitve programming for around 2 years now. Apart from competitve programming, I have tried my hands on Android development and web development. 
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container-fluid fourth-screen">
+		<div class="row">
+			<div id="profile-info" class="col-md-6">
+				<span>
+				</span>
+			</div>
+			<div id="profile-pic-3" class="col-md-6">
+				<div id="profile-name">
+					DEVESH YADAV
+				</div>
+				<div class="divider">
+				</div>
+				<div id="profile-alias">
+					@dyarch
+				</div>
+				<span id="github-icon">
+					<i class="fa fa-github" aria-hidden="true"></i>
+				</span>
+				<span id="stack-icon">
+					<i class="fa fa-stack-overflow" aria-hidden="true"></i>
+				</span>
+				<span id="linked-icon">
+					<i class="fa fa-linkedin" aria-hidden="true"></i>
+				</span>
+				
+
+			</div>
+		</div>
+	</div>
+	
+
+	<script src="smooth_page_scroll.js">
+	</script>
+
+	<script src="/js/popper.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+		$('#screen1-link').on('click',function(){
+	var x = $('.first-screen').offset().top;
+	$('html,body').animate({scrollTop:x},600,function(){
+		//animation complete
+	});
+});
+
+$('#screen2-link').on('click',function(){
+	var x = $('.second-screen').offset().top;
+	$('html,body').animate({scrollTop:x},600,function(){
+		//animation complete
+	});
+});
+
+$('#screen3-link').on('click',function(){
+	var x = $('.third-screen').offset().top;
+	$('html,body').animate({scrollTop:x},600,function(){
+		//animation complete
+	});
+});
+
+$('#screen4-link').on('click',function(){
+	var x = $('.fourth-screen').offset().top;
+	$('html,body').animate({scrollTop:x},600,function(){
+		//animation complete
+	});
+});
+	$('#down-arrow').hover(function(){
+		console.log('ji');
+		$('#down-arrow img').animate({
+			'marginTop': '+10px'
+		});
+
+	}, function(){
+		$('#down-arrow img').animate({
+			'marginTop': '-10px'
+		});		
+	});
+	$('#down-arrow').on('click', function(){
+		var x = $('.second-screen').offset().top;
+		$('html,body').animate({scrollTop:x},600,function(){
+			//animation complete
+		});
+	});
+	</script>
+
+	<script src="/js/typed.js"></script>
+    <script>
+        $(function(){
+            $(".element").typed({
+                strings: ["WE &lt;CODE&gt;.", "WE {DEVELOP}.","WE ARE TEAM 16"],
+                typeSpeed: 30
+            });
+        });
+
+    </script>
+    <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
+    <script type="text/javascript">
+        window.sr = ScrollReveal({ duration: 2000});
+        sr.reveal('.img-responsive');
+        //sr.reveal('.bar');
+    </script>
+
+</body>
+</html>

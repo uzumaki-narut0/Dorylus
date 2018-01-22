@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet"> 
+	<script src="/js/jquery.js"></script>
+	<style type="text/css">
+		/*@import url(https://fonts.googleapis.com/css?family=Roboto:300);*/
+		.login-page {
+		  width: 360px;
+		  padding: 8% 0 0;
+		  margin: auto;
+		}
+		.form {
+		  position: relative;
+		  z-index: 1;
+		  background: #FFFFFF;
+		  max-width: 360px;
+		  margin: 0 auto 50px;
+		  padding: 45px;
+		  text-align: center;
+		  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+		}
+		.form input {
+		  font-family: "Roboto", sans-serif;
+		  outline: 0;
+		  background: #f2f2f2;
+		  width: 100%;
+		  border: 0;
+		  margin: 0 0 15px;
+		  padding: 15px;
+		  box-sizing: border-box;
+		  font-size: 14px;
+		}
+		.form button {
+		  font-family: "Roboto", sans-serif;
+		  text-transform: uppercase;
+		  outline: 0;
+		  background: rgb(40, 50, 78);
+		  width: 100%;
+		  border: 0;
+		  padding: 15px;
+		  color: #FFFFFF;
+		  font-size: 14px;
+		  -webkit-transition: all 0.3 ease;
+		  transition: all 0.3 ease;
+		  cursor: pointer;
+		}
+		.form button:hover,.form button:active,.form button:focus {
+		  background: rgba(40, 50, 78, 0.9);
+		}
+		.form .message {
+		  margin: 15px 0 0;
+		  color: #b3b3b3;
+		  font-size: 12px;
+		}
+		.form .message a {
+		  color: rgba(40, 50, 78, 0.9);
+		  text-decoration: none;
+		}
+		.form .register-form {
+		  display: none;
+		}
+		.container {
+		  position: relative;
+		  z-index: 1;
+		  max-width: 300px;
+		  margin: 0 auto;
+		}
+		.container:before, .container:after {
+		  content: "";
+		  display: block;
+		  clear: both;
+		}
+		.container .info {
+		  margin: 50px auto;
+		  text-align: center;
+		}
+		.container .info h1 {
+		  margin: 0 0 15px;
+		  padding: 0;
+		  font-size: 36px;
+		  font-weight: 300;
+		  color: #1a1a1a;
+		}
+		.container .info span {
+		  color: #4d4d4d;
+		  font-size: 12px;
+		}
+		.container .info span a {
+		  color: #000000;
+		  text-decoration: none;
+		}
+		.container .info span .fa {
+		  color: #EF3B3A;
+		}
+		.appname{
+			display: none;
+		}
+		body {
+			
+		  background: #76b852; /* fallback for old browsers */
+		  background-color: rgba(40, 50, 78, 0.6);
+		  background: -webkit-linear-gradient(right, rgba(40, 50, 78, 0.7), rgba(40, 50, 78, 0.9));
+		  background: -moz-linear-gradient(right, rgba(40, 50, 78, 0.7), rgba(40, 50, 78, 0.9));
+		  background: -o-linear-gradient(right, rgba(40, 50, 78, 0.7), rgba(40, 50, 78, 0.9));
+		  background: linear-gradient(to left, rgba(40, 50, 78, 0.7), rgba(40, 50, 78, 0.9));
+		  font-family: "Roboto", sans-serif;
+		  -webkit-font-smoothing: antialiased;
+		  -moz-osx-font-smoothing: grayscale;      
+		}
+		#snackbar {
+		    visibility: hidden;
+		    min-width: 250px;
+		    margin-left: -125px;
+		    background-color: #333;
+		    color: #fff;
+		    text-align: center;
+		    border-radius: 2px;
+		    padding: 16px;
+		    position: fixed;
+		    z-index: 1;
+		    left: 50%;
+		    bottom: 30px;
+		    font-size: 17px;
+		}
+		#snackbar.show {
+		    visibility: visible;
+	    	-webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+	    	animation: fadein 0.5s, fadeout 0.5s 2.5s;
+		}
+
+		@-webkit-keyframes fadein {
+		    from {bottom: 0; opacity: 0;} 
+		    to {bottom: 30px; opacity: 1;}
+		}
+
+		@keyframes fadein {
+		    from {bottom: 0; opacity: 0;}
+		    to {bottom: 30px; opacity: 1;}
+		}
+
+		@-webkit-keyframes fadeout {
+		    from {bottom: 30px; opacity: 1;} 
+		    to {bottom: 0; opacity: 0;}
+		}
+
+		@keyframes fadeout {
+		    from {bottom: 30px; opacity: 1;}
+		    to {bottom: 0; opacity: 0;}
+		}
+	</style>
+</head>
+<body>
+	<div class="login-page">
+	  <div class="form">
+	  	<h3 >Login to ChessBrain</h3>
+	  	<h3 class="appname">Signup to ChessBrain</h3>
+	    <form id="myForm" class="register-form" action="/handleSignup" method="post">
+	      <input name="username" type="text" pattern=".{6,}" title="Six or more characters" placeholder="name" required/>
+	      <input name="userpassword" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" placeholder="password" required/>
+	      <input name="usermail" type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" placeholder="email address" required/>
+	      <button>create</button>
+	      <p class="message">Already registered? <a href="#">Sign In</a></p>
+	    </form>
+	    <form class="login-form" action="/home" method="post">
+	      <input id="username" name="username" type="text" placeholder="username" required/>
+	      <input id="userpassword" name="userpassword" type="password" placeholder="password" required/>
+	      <button>login</button>
+	      <p class="message">Not registered? <a href="#">Create an account</a></p>
+	    </form>
+	  </div>
+	</div>
+	<div id="snackbar">Some text some message..</div>
+	<script type="text/javascript">
+		$('.message a').click(function(){
+			$('h3').toggleClass("appname");
+		   $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+		});
+
+		$(".login-form").submit(function(event){
+		    event.preventDefault();
+		    console.log($('#username').val());
+		    console.log($(".login-form").serialize());
+		    $.post('/' + $('#username').val() + '/home', $(".login-form").serialize(), function(data, statusText) {
+		        console.log(statusText);
+		        window.location = '/' + $('#username').val() + '/home';
+		        if(statusText == 'notmodified')
+		        {
+		        	$('#snackbar').text("Wrong username / password");
+		        	var x = document.getElementById("snackbar")
+		    		x.className = "show";
+		    		setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+		        	// console.log();
+		        }
+		    });
+	    });
+
+
+	</script>
+
+</body>
+</html>

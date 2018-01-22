@@ -1,0 +1,109 @@
+/*
+#CACFD1
+#FAFBFB
+*/
+@font-face {
+	font-family: "Elianto"; 
+	src: url("../fonts/Elianto-Regular.ttf");
+}
+*{
+	margin: 0;
+	padding: 0;
+}
+.navbar{
+	font-family: 'Elianto', sans-serif;
+	border-radius: 0;
+	margin-bottom: 0;
+}
+#video-wrapper{
+	height: calc(100vh - 50px);
+}
+#home-body{
+	background-color: #FAFBFB;
+	padding-top: 30px; 
+}
+.card-wrapper{
+	font-family: 'Lato', sans-serif;
+	float: left;
+	position: relative;
+	margin-right: calc((10%)/2);
+	box-sizing: border-box;
+	width:25%;
+	box-sizing: border-box;
+	border-radius: 2%/2%;
+	height: 300px;
+	background-color: #FAFBFB;
+	box-shadow: -5px -5px 25px 0 rgba(46,61,73,.25);
+	overflow: hidden;
+	margin-bottom: 36px;
+}
+.card-wrapper:nth-child(3n) {
+    margin-right: 7.5%;
+}
+.card-wrapper:nth-child(3n+1) {
+    margin-left: 7.5%;
+}
+.card-pic-holder{
+	position: relative;
+	width: 100%;
+	height: 45%;
+	background: url('../img/bg3.jpg');
+	background-size: cover;
+	-webkit-clip-path: polygon(0 0, 100% 0, 100% 77%, 0% 100%);
+	clip-path: polygon(0 0, 100% 0, 100% 77%, 0% 100%);
+}
+.profile-pic{
+	-webkit-clip-path: circle(50% at 50% 50%);
+	clip-path: circle(50% at 50% 50%);
+	position: absolute;
+	right:15%;
+	top:78px;
+	width: 60px;
+	height: 60px;
+	background: url('../img/man.png');
+	/*background-size: cover;  */
+}
+.card-title{
+	font-family: 'Railway', sans-serif;
+	font-size: 20px;
+	padding: 16px 20px 0 20px;
+}
+.card-intro{
+	font-size: 14px;
+	font-weight: lighter;
+	padding: 2px 20px 12px 20px;
+}
+.divider{
+	width: 100%;
+	padding-left: 5%;
+	height: 1px;
+	background-color: #CACFD1;
+}
+.label-danger{
+	/*display: inline-block;*/
+	/*margin-top: 8px;*/
+	position: absolute;
+	top:8px;
+	left: 8px;
+	font-family: "Elianto", sans-serif;
+	padding: 8px 20px 8px 6px;
+	/*width: 72px;*/
+	color: #fff;
+	-webkit-clip-path: polygon(100% 0, 88% 51%, 100% 100%, 0% 100%, 0 50%, 0% 0%);
+	clip-path: polygon(100% 0, 88% 51%, 100% 100%, 0% 100%, 0 50%, 0% 0%);
+	font-size: 12px;
+	/*padding-top:16px; */
+}
+.footer {
+	padding-top: 16px;
+	padding-bottom: 12px;
+	font-family: 'Elianto', sans-serif;
+	font-size: 16px;
+    /*position: fixed;*/
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: black;
+    color: white;
+    text-align: center;
+}

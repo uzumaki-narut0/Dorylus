@@ -1,0 +1,522 @@
+<script src="/js/chess.js"></script>
+
+<!-- Draw Modal -->
+<div class="modal fade" id="drawModal" role="dialog">
+	<div class="modal-dialog">
+	<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">!!! DRAW !!!</h4>
+			</div>
+			<div class="modal-body">
+				<p>Your opponent is offering a draw.</p>
+			</div>
+			<div class="modal-footer">
+				<button id="draw-accept-btn" type="button" class="btn btn-default" data-dismiss="modal">Accept</button>
+				<button id="draw-reject-btn" type="button" class="btn btn-default" data-dismiss="modal">Reject</button>
+			</div>
+		</div>  
+	</div>
+</div>
+<!-- Draw Modal ends -->
+
+<!-- Game Results Modal -->
+<div class="modal fade" id="resultsModal" role="dialog">
+	<div class="modal-dialog">
+	<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Game Ended</h4>
+			</div>
+			<div class="modal-body">
+				<p id="game-result-p"></p>
+			</div>
+			<div class="modal-footer">
+				<button id="draw-accept-btn" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
+		</div>  
+	</div>
+</div>
+<!-- Game Results Modal ends -->
+
+<div class="container-fluid">
+	<div class="row" style="height: 100%">
+		<div style="background-color: rgb(40, 50, 78);height: 100%;" class="col-md-1">
+			<ul id="sidebar-ul">
+				<li id="sidebar-li-app" class="sidebar-li">
+				<img src="https://lichess1.org/assets/images/learn/brutal-helm.svg">
+				CB
+				</li>
+				<li id="castle-btn" class="sidebar-li"><img src="https://lichess1.org/assets/images/learn/castle.svg">
+					Castle
+				</li>
+				<li id="logout-btn" class="sidebar-li"><img src="https://lichess1.org/assets/images/learn/winged-sword.svg">Logout</li>
+			</ul>
+		</div>
+		<div id="chessboard-div" class="col-md-7">
+			<div style="height: 100%" class="row">
+				<div class="col-md-9">
+					<div id="board1">
+            		</div>
+				</div>
+				<div id="timer" class="col-md-3">
+					<ul>
+						<li>
+
+							<span id="opponent-name">Magnus</span>
+							<br>
+							<span class="label label-info">
+								<i class="fa fa-clock-o" aria-hidden="true"></i>
+								<span id="opponent-timer">
+									05:00
+								</span>
+							</span>
+						</li>
+						<li id="offerdraw-btn" style="margin-bottom: 10px">
+							<span class="label label-warning">
+							<i class="fa fa-handshake-o" aria-hidden="true"></i>
+							Offer Draw
+							</span><br>
+						</li>
+						<li id="resign-btn">
+							<span class="label label-danger">
+							<i class="fa fa-ravelry" aria-hidden="true"></i>
+							Resign
+							</span><br>
+						</li>
+						<li style="padding-bottom: 0">
+							<span class="label label-info">
+								<i class="fa fa-clock-o" aria-hidden="true"></i>
+								<span id="player-timer"> 04:59</span>
+							</span>
+							<br>
+							<span id="player-name">
+								{{userDetails.username}}
+							</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+            
+		</div>
+		<div id="chessWrapper" class="col-md-4">
+			<div id="profile-header" class="row">
+		<!-- 	<div class="col-md-1">
+			</div> -->
+
+			<div id="heading" class="col-md-12">
+				<i  class="fa fa-toggle-on fa" aria-hidden="true"></i>
+				CHAT
+			</div>
+		</div>
+
+		<div id="profile-info-chat" class="row">
+			<div class="col-md-12">
+				<div id="profile-info-overlay" class="row">
+					<div class="col-md-12">
+						<div id="profile-pic-wrapper" class="row">
+							<div class="col-md-6">
+								<img id="user-pic" class="img-circle" src="/img/crown(4).png">
+							</div>
+							<div class="col-md-6">
+								<img id="user-pic" class="img-circle" src="/img/crown(3).png">
+							</div>
+						</div>
+						<div id="user-name-wrapper" class="row">
+							<div class="col-md-6">
+								<span id="user-opponent-name">
+									<!-- {{userDetails.username}} -->
+									Magnus
+								</h2>
+							</div>
+							<div class="col-md-6">
+								<span id="user-name">
+									<!-- {{userDetails.username}} -->
+									Swapnil
+								</h2>
+							</div>
+						</div>
+						<div id="user-category-wrapper" class="row">
+							<div class="col-md-6">
+								<button class="btn rounded-circle">
+									1st Category
+								</button>
+							</div>
+							<div class="col-md-6">
+								<button class="btn rounded-circle">
+									2nd Category
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="chat-div" class="row">
+		</div>
+		
+		<div id="chat-div-footer" class="row">
+			<input id="message" type="text">	
+		</div>
+		<button id="send-msg-btn" class="btn-primary">
+				Send
+		</button>
+
+		</div>
+	</div>
+</div>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/chessboard-0.3.0.js"></script>
+<script src="/js/timer.js"></script>
+<script type="text/javascript">
+
+// board defaults to the starting position when called with no parameters
+var game = new Chess();
+var gameTurn = "white"; // initially it would be white's turn to play
+var whiteTimer = new Timer({
+	tick    : 1,
+  	ontick  : whiteOnTick,
+  	// onstart : whiteOnStart,
+  	// onstop  : whiteOnStop,
+  	// onpause : whiteOnPause,
+  	onend   : whiteOnEnd
+});
+var blackTimer = new Timer({
+	tick    : 1,
+  	ontick  : blackOnTick,
+  	// onstart : blackOnStart,
+  	// onstop  : blackOnStop,
+  	// onpause : blackOnPause,
+  	onend   : blackOnEnd
+});
+var chessTime = 5 * 60 ; //5 minutes
+var unique_key = "{{id}}";
+var currplayer = "{{playas}}";
+var playerName;
+var opponentName;
+var nextplayer;
+var gameResult;
+var socket = io();	//this will trigger io.on('connection', function(socket) -> check it
+var flag = 0;
+var opponent_msg_template = '<span class="opponent-msg"></span>';
+var player_msg_template = '<span class="player-msg"></span>	';
+whiteTimer.start(chessTime);
+whiteTimer.pause();
+blackTimer.start(chessTime);
+blackTimer.pause();
+/*
+	onDragStart
+	1. Fires when a piece is picked up.
+	2. The drag action is prevented if the function returns false.
+	3. the function disables picking up pieces if the game is over
+	4. only pick up pieces for the side to move
+*/
+var onDragStart = function(source, piece, position, orientation) {
+  if (game.game_over() === true ||
+      (game.turn() === 'w' && piece.search(/^b/) !== -1) ||
+      (game.turn() === 'b' && piece.search(/^w/) !== -1)) {
+    return false;
+  }
+};
+
+/*
+	onDrop
+	1. Fires when a piece is dropped.
+	2. the function returns snapback when its opponent's turn
+	3. the function triggers 'sendmove' and 'triggerPassChance' if it is player's turn
+	game.move() is a chess.js function (no UI changes)
+	board.move() is a chessboard.js function (UI changes)
+*/
+var onDrop = function(source, target) 
+{
+	console.log('gameTurn: '+ gameTurn + " " + "currplayer: " + currplayer);
+	if(gameTurn == currplayer)	//initially it would allow white, then alternate
+	{
+		if(flag == 0)
+			return 'snapback'; //do not start the game till opponent is not discovered
+
+		var move = game.move({
+			from: source,
+			to: target,
+			promotion: 'q' // NOTE: always promote to a queen for example simplicity
+		});
+
+		if (move === null) return 'snapback'; // illegal move
+		socket.emit('sendmove',source, target, unique_key, board.fen());
+		currplayer == 'white' ? (nextplayer = 'black') : (nextplayer = 'white');
+		socket.emit('triggerPassChance', nextplayer, unique_key);	//handshake starts from client
+	}
+	else
+		return 'snapback';
+};
+
+// update the board position after the piece snap 
+// for castling, en passant, pawn promotion
+var onSnapEnd = function() 
+{
+	board.position(game.fen());
+};
+
+//it has to be placed below onDrop and onSnapEnd since they are function expressions
+var pos = "{{userDetails.gamestate}}";
+console.log(pos);
+var cfg = { //initial configuration for board
+  orientation: currplayer,
+  draggable: true,
+  position: "{{userDetails.gamestate}}",
+  onDragStart: onDragStart,
+  onDrop: onDrop,
+  onSnapEnd: onSnapEnd
+};
+board = ChessBoard('board1', cfg); //initializing ChessBoard
+
+socket.on('connect',function(){
+  console.log('client successfully connected index');
+  if(currplayer == "white")
+  {
+	socket.emit('create', unique_key, "{{userDetails.username}}");
+  } 
+  else
+  {
+    socket.emit('join', unique_key, "{{userDetails.username}}");
+  }
+});
+
+
+socket.on('updatePlayersInfo', function(playerBlack, playerWhite){
+
+	if(currplayer == 'white')
+	{
+		playerName = playerWhite;
+		opponentName = playerBlack;
+		$("#player-name").text(playerWhite);
+		$("#user-name").text(playerWhite);
+		$("#opponent-name").text(playerBlack);
+		$("#user-opponent-name").text(playerBlack);
+	}
+	else
+	{
+		playerName = playerBlack;
+		opponentName = playerWhite;
+		$("#player-name").text(playerBlack);
+		$("#user-name").text(playerBlack);
+		$("#opponent-name").text(playerWhite);
+		$("#user-opponent-name").text(playerWhite);
+	}
+
+	//now start the timer of white
+	//and make flag = 1 to start play
+	flag = 1 ; //game start
+	whiteTimer.start();	//timer of white player started
+  
+});
+//pass chance acknowledgment recieved (client side ack of syn->ack)
+socket.on('ackPassChance', function(currplayer){
+	//maybe it delays for one of the client.. hence the time gap
+	//implement timer code on server side for syncing the timers
+  gameTurn = currplayer;	//overshadows global currplayer
+  if(gameTurn == 'white')
+  {
+  	whiteTimer.start();
+  	blackTimer.pause();
+  }
+  else
+  {
+  	blackTimer.start();
+  	whiteTimer.pause();
+  }
+});
+
+//update board UI (that is why using board.move() instead of game.move())
+socket.on('updateboard',function(source, target)
+{
+	board.move(source + '-' + target);	//for chessboard.js  
+	game.move({
+		from: source,
+		to: target,
+		promotion: 'q' // NOTE: always promote to a queen for example simplicity
+	});
+	updateStatus();	//handle draw | checkmate| check | game still on
+});
+
+
+socket.on('offerdraw-server-ack', function(unique_key, playerWhoIsOffering){
+	if(currplayer != playerWhoIsOffering)
+	{
+		//open a modal and ask for approval, then update database if accepted draw
+		$("#drawModal").modal();
+	}
+});
+
+socket.on('offerresign-server-ack', function(unique_key, playerWhoIsOffering){
+	if(currplayer != playerWhoIsOffering)
+	{
+		//add to database won
+		// console.log("you won");
+		$("#game-result-p").text("you won");
+   		$("#resultsModal").modal();
+	}
+	else
+	{
+		// console.log("you lost");
+		$("#game-result-p").text("you lost");
+    	$("#resultsModal").modal();
+		//add to database lost
+	}
+});
+
+socket.on('server-msg-ack', function(unique_key, playerWhoSentMsg, message_received){
+	if(currplayer != playerWhoSentMsg)
+	{
+		var elem2 = document.createElement('span');
+		$(elem2).addClass("opponent-msg");
+		var node = document.createTextNode(message_received);
+		elem2.appendChild(node);
+		$("#chat-div").append(elem2);
+		let ht = document.getElementById("chat-div").scrollHeight;
+		// $("#chat-div").scrollTop(ht);
+		$("#chat-div").animate({scrollTop:ht}, 1000, 'swing', function() { 
+		   // alert("Finished animating");
+		});
+	}
+});
+
+$("#castle-btn").on('click', function(){
+	$.get('/' +"{{userDetails.username}}"+ '/home', function(data){
+    window.location = '/' + "{{userDetails.username}}" + '/home';
+  });
+});
+
+$("#logout-btn").on('click', function(){
+	//destroy session then redirect to start page
+	$.get('/', function(data){
+    window.location = '/';
+  });
+
+});
+
+$("#offerdraw-btn").on('click', function(){
+	socket.emit('offerdraw-client-syn', unique_key, currplayer);//currplayer = player who is offering draw
+});
+
+$("#resign-btn").on('click', function(){
+	console.log(playerName + " " + opponentName );
+	//user1 = winner
+	//user2 = loser
+	$.post( "/resultUpdate", { code : 1, user1 : opponentName, user2 : playerName });
+	socket.emit('offerresign-client-syn', unique_key, currplayer);	//currplayer = player who is resigning
+});
+
+//acknowledgment recieved for offer-draw
+$("#draw-accept-btn").on('click', function(){
+	//add one draw to both players database 
+	//redirect to castle (user's home)
+
+	$("#game-result-p").text("Game Drawn");
+	$.post( "/resultUpdate", { code : 0, user1 : playerName, user2 : opponentName });
+});
+
+$("#draw-reject-btn").on('click', function(){
+	//do nothing
+});
+
+$("#send-msg-btn").on('click', function(){
+	var elem = document.createElement('span');
+	$(elem).addClass("player-msg");
+	$("#chat-div").append(elem);
+	var player_msg_node = document.createTextNode($('#message').val());
+	elem.appendChild(player_msg_node);
+	let ht = document.getElementById("chat-div").scrollHeight;
+	$("#chat-div").animate({scrollTop:ht}, 1000, 'swing', function() { 
+		   // alert("Finished animating");
+		});
+	socket.emit('client-msg-syn', unique_key, currplayer, $('#message').val());
+	$('#message').val('');
+});
+
+function updateStatus() 
+{
+  var status = '';
+
+  var moveColor = 'White';
+  if (game.turn() === 'b') {
+    moveColor = 'Black';
+  }
+
+  // checkmate?
+  if (game.in_checkmate() === true) {
+    status = 'Game over, ' + moveColor + ' is in checkmate.';
+    $("#game-result-p").text(status);
+    $("#resultsModal").modal();
+    //avoid both clients making a post request [redundancy in database updation]
+    console.log(currplayer + "making post request");
+    if(currplayer == 'white')
+    {
+    	if(moveColor == 'White')
+    	{
+    		$.post( "/resultUpdate", { code : 1, user1 : opponentName, user2 : playerName });	
+    	}
+    	else
+    	{
+    		//black (opponent) loses
+    		$.post( "/resultUpdate", { code : 1, user1 : playerName, user2 : opponentName });
+    	}
+		
+    }
+  }
+
+  // draw?
+  else if (game.in_draw() === true) {
+    status = 'Game over, drawn position';
+    $("#game-result-p").text(status);
+    $("#resultsModal").modal();
+    $.post( "/resultUpdate", { code : 0, user1 : playerName, user2 : opponentName });
+  }
+
+  // game still on
+  else {
+    status = moveColor + ' to move';
+
+    // check?
+    if (game.in_check() === true) {
+      status += ', ' + moveColor + ' is in check';
+    }
+  }
+
+  console.log(status);
+  console.log(game.fen());
+  console.log(game.pgn());
+}
+
+function whiteOnTick(ms){
+	if(gameTurn == 'white')
+	{
+		if(currplayer == 'white')
+			$("#player-timer").text((ms/60000).toFixed(2));
+		else
+			$("#opponent-timer").text((ms/60000).toFixed(2));
+	}
+}
+
+function blackOnTick(ms){
+	if(gameTurn == 'black')
+	{
+		if(currplayer == 'black')
+			$("#player-timer").text((ms/60000).toFixed(2));
+		else
+			$("#opponent-timer").text((ms/60000).toFixed(2));
+	}
+}
+
+function whiteOnEnd(){
+
+}
+
+function blackOnEnd(){
+
+}
+
+</script>
