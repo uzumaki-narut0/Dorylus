@@ -10,13 +10,86 @@
 	margin: 0;
 	padding: 0;
 }
-.navbar{
+body{
+	font-family: 'Raleway', sans-serif;
+	background-color: rgba(40, 50, 78, 0.9);
+}
+nav{
+	background:rgba(40, 50, 78, 0.5);
+	z-index: 100;
+	position: absolute;
+	top:0;
+	left: 0;
+	width: 100%;
+	height: 100vh;
+}
+#nav-ul{
+	z-index: 100;
+	padding-top: 24px;
+	color: #fff;
+	width: 100%;
+}
+#site-headline{
+	
+	z-index: 100;
+	color: #fff;
+	font-size: 48px;
+	position: absolute;
+	top:30%;
+	left: 50%;
+	transform: translateX(-267.5px);
+}
+#site-overview{
+	font-family: 'Lato', sans-serif;
+	text-align: center;
+	z-index: 100;
+	color: #fff;
+	font-size: 24px;
+	position: absolute;
+	top:45%;
+	left: 25%;
+	right: 25%;
+	/*padding-left: 20%;*/
+	/*padding-right: 20%;*/
+	/*transform: translateX(-267.5px);	*/
+}
+#start-btn{
+	font-size: 20px;
+	position: absolute;
+	top: 75%;
+	left: 50%;
+	transform: translateX(-75px);
+}
+.nav-li{
+	z-index: 100;
+	font-size: 20px;
+	display: inline-block;
+	padding-right: 24px;
+	list-style: none;
+}
+#brand-name-li{
 	font-family: 'Elianto', sans-serif;
-	border-radius: 0;
-	margin-bottom: 0;
+	color: #fff;
+	z-index: 2000;
+	height: 128px;
+	display: inline-block;
+	font-size: 36px;
+	list-style: none;
+	padding-right: 36px;
+	background: url('../img/logo.png');
+	background-position: center bottom;
+	background-repeat: no-repeat;
+	padding-left: 36px;
 }
 #video-wrapper{
-	height: calc(100vh - 50px);
+	
+	-webkit-clip-path: polygon(100% 0, 100% 76%, 67% 92%, 0 100%, 0 0);
+	clip-path: polygon(100% 0, 100% 76%, 67% 92%, 0 100%, 0 0);
+	height: 100vh;
+	
+}
+#video-wrapper div{
+	background:rgba(40, 50, 78, 0.6);
 }
 #home-body{
 	background-color: #FAFBFB;
@@ -33,16 +106,20 @@
 	border-radius: 2%/2%;
 	height: 300px;
 	background-color: #FAFBFB;
-	box-shadow: -5px -5px 25px 0 rgba(46,61,73,.25);
+	box-shadow: 5px 5px 25px 0 rgba(46,61,73,.25);
 	overflow: hidden;
 	margin-bottom: 36px;
 }
-.card-wrapper:nth-child(3n) {
+.card-wrapper-big{
+	width:50%;
+}
+.card-wrapper:nth-child(even), .card-wrapper-big:nth-child(even) {
     margin-right: 7.5%;
 }
-.card-wrapper:nth-child(3n+1) {
+.card-wrapper:nth-child(odd), .card-wrapper-big:nth-child(odd) {
     margin-left: 7.5%;
 }
+
 .card-pic-holder{
 	position: relative;
 	width: 100%;
@@ -64,7 +141,8 @@
 	/*background-size: cover;  */
 }
 .card-title{
-	font-family: 'Railway', sans-serif;
+	font-family: 'Raleway', sans-serif;
+	font-weight: bolder;
 	font-size: 20px;
 	padding: 16px 20px 0 20px;
 }
