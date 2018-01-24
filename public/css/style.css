@@ -9,101 +9,70 @@
 *{
 	margin: 0;
 	padding: 0;
+	box-sizing: border-box;
 }
 body{
 	font-family: 'Raleway', sans-serif;
-	background-color: rgba(40, 50, 78, 0.9);
 }
 nav{
-	background:rgba(40, 50, 78, 0.5);
+	background:rgba(0, 0, 0, 0.6);
 	z-index: 100;
 	position: absolute;
 	top:0;
 	left: 0;
 	width: 100%;
 	height: 100vh;
+	color: #fff;
 }
 #nav-ul{
-	z-index: 100;
 	padding-top: 24px;
-	color: #fff;
 	width: 100%;
 }
 #site-headline{
-	
-	z-index: 100;
-	color: #fff;
-	font-size: 48px;
-	position: absolute;
-	top:30%;
-	left: 50%;
-	transform: translateX(-267.5px);
+	font-size: 44px;
+	font-weight: 500;
+	margin-top:16%;
 }
 #site-overview{
 	font-family: 'Lato', sans-serif;
-	text-align: center;
-	z-index: 100;
-	color: #fff;
-	font-size: 24px;
-	position: absolute;
-	top:45%;
-	left: 25%;
-	right: 25%;
-	/*padding-left: 20%;*/
-	/*padding-right: 20%;*/
-	/*transform: translateX(-267.5px);	*/
+	font-weight: 300;
+	font-size: 22px;
+	margin-top:2%;
 }
 #start-btn{
+	display: inline-block;
 	font-size: 20px;
-	position: absolute;
-	top: 75%;
-	left: 50%;
-	transform: translateX(-75px);
+	margin-top: 4%;
 }
 .nav-li{
-	z-index: 100;
-	font-size: 20px;
+	font-family: 'Lato', sans-serif;
+	font-weight: 400;
+	font-size: 18px;
 	display: inline-block;
-	padding-right: 24px;
+	padding-right: 20px;
 	list-style: none;
 }
 #brand-name-li{
-	font-family: 'Elianto', sans-serif;
-	color: #fff;
-	z-index: 2000;
-	height: 128px;
 	display: inline-block;
 	font-size: 36px;
 	list-style: none;
-	padding-right: 36px;
-	background: url('../img/logo.png');
-	background-position: center bottom;
-	background-repeat: no-repeat;
-	padding-left: 36px;
+	padding-right: 15%;
+	padding-left: 25%;
 }
 #video-wrapper{
-	
-	-webkit-clip-path: polygon(100% 0, 100% 76%, 67% 92%, 0 100%, 0 0);
-	clip-path: polygon(100% 0, 100% 76%, 67% 92%, 0 100%, 0 0);
-	height: 100vh;
-	
-}
-#video-wrapper div{
-	background:rgba(40, 50, 78, 0.6);
+	height: 100vh;	
 }
 #home-body{
-	background-color: #FAFBFB;
+	background-color: #ECEFF1;
 	padding-top: 30px; 
 }
 .card-wrapper{
 	font-family: 'Lato', sans-serif;
 	float: left;
 	position: relative;
-	margin-right: calc((10%)/2);
-	box-sizing: border-box;
-	width:25%;
-	box-sizing: border-box;
-	border-radius: 2%/2%;
+	margin-right: 6%;
+	width:27%;
+	border-radius: 1.5%/1.5%;
 	height: 300px;
 	background-color: #FAFBFB;
 	box-shadow: 5px 5px 25px 0 rgba(46,61,73,.25);
@@ -111,21 +80,27 @@ nav{
 	margin-bottom: 36px;
 }
 .card-wrapper-big{
-	width:50%;
+	width:60%;
 }
 .card-wrapper:nth-child(even), .card-wrapper-big:nth-child(even) {
-    margin-right: 7.5%;
+    margin-right: 2%;
 }
 .card-wrapper:nth-child(odd), .card-wrapper-big:nth-child(odd) {
-    margin-left: 7.5%;
+    margin-left: 2%;
 }
 
+.card-wrapper-big .card-pic-holder{
+	background: url('../img/minions.jpg');
+	background-size: cover;
+	background-position: center;
+}
 .card-pic-holder{
 	position: relative;
 	width: 100%;
 	height: 45%;
 	background: url('../img/bg3.jpg');
 	background-size: cover;
+	background-position: center;
 	-webkit-clip-path: polygon(0 0, 100% 0, 100% 77%, 0% 100%);
 	clip-path: polygon(0 0, 100% 0, 100% 77%, 0% 100%);
 }
@@ -141,8 +116,7 @@ nav{
 	/*background-size: cover;  */
 }
 .card-title{
-	font-family: 'Raleway', sans-serif;
-	font-weight: bolder;
+	font-weight: 400;
 	font-size: 20px;
 	padding: 16px 20px 0 20px;
 }
@@ -158,30 +132,55 @@ nav{
 	background-color: #CACFD1;
 }
 .label-danger{
-	/*display: inline-block;*/
-	/*margin-top: 8px;*/
 	position: absolute;
 	top:8px;
 	left: 8px;
-	font-family: "Elianto", sans-serif;
 	padding: 8px 20px 8px 6px;
-	/*width: 72px;*/
 	color: #fff;
 	-webkit-clip-path: polygon(100% 0, 88% 51%, 100% 100%, 0% 100%, 0 50%, 0% 0%);
 	clip-path: polygon(100% 0, 88% 51%, 100% 100%, 0% 100%, 0 50%, 0% 0%);
 	font-size: 12px;
-	/*padding-top:16px; */
 }
 .footer {
+	font-weight: 400;
 	padding-top: 16px;
 	padding-bottom: 12px;
-	font-family: 'Elianto', sans-serif;
 	font-size: 16px;
-    /*position: fixed;*/
     left: 0;
     bottom: 0;
     width: 100%;
     background-color: black;
     color: white;
     text-align: center;
+}
+
+/*Mobile first*/
+#site-wrapper
+{
+	padding-left: 5%;
+	padding-right: 5%;
+	text-align: center;
+	z-index: 100;
+
+}
+
+@media (min-width: 720px){
+	#site-wrapper
+	{
+		padding-left: 15%;
+		padding-right: 15%;
+		text-align: center;
+		z-index: 100;
+	}
+}
+
+@media (min-width: 1068px)
+{
+	#site-wrapper
+	{
+		padding-left: 25%;
+		padding-right: 25%;
+		text-align: center;
+		z-index: 100;
+	}
 }

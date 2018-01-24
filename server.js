@@ -66,6 +66,11 @@ app.get('/home', function(req, res){
 
 });
 
+app.get('/dashboard', function(req, res){
+  res.render("dashboard");
+
+});
+
 app.get('/:userid/home',function(req,res){
   if(req.params.userid == req.session.username)
   {
