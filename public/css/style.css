@@ -16,7 +16,7 @@ body{
 	font-family: 'Raleway', sans-serif;
 }
 nav{
-	background:rgba(0, 0, 0, 0.6);
+	
 	z-index: 100;
 	position: absolute;
 	top:0;
@@ -27,6 +27,7 @@ nav{
 	vertical-align: middle !important;
 }
 #nav-ul{
+
 	padding-top: 24px;
 	width: 100%;
 }
@@ -67,7 +68,7 @@ nav{
 	height: calc(100vh-48px);	
 }
 #home-body{
-	background-color: #ECEFF1;
+	background-color: rgba(93, 198, 232, 0.5);
 	padding-top: 30px; 
 }
 .card-wrapper{
@@ -76,16 +77,18 @@ nav{
 	position: relative;
 	margin-right: 6%;
 	width:27%;
-	border-radius: 1.5%/1.5%;
+	border-top-right-radius: 1.5%;
+	border-top-left-radius: 1.5%;
 	height: 250px;
 	background-color: #FAFBFB;
-	box-shadow: 5px 5px 25px 0 rgba(46,61,73,.25);
+	box-shadow: 5px 5px 20px 0 rgba(46,61,73,.25);
 	overflow: hidden;
 	margin-bottom: 36px;
+	border-bottom: 6px solid #e8b466;
 }
-/*.card-wrapper-big{
-	width:60%;
-}*/
+.card-wrapper-big{
+	border-bottom: 6px solid #36c593;
+}
 .card-wrapper:nth-child(3n){
     margin-right: 2%;
 }
@@ -97,6 +100,7 @@ nav{
 	background: url('../img/minions.jpg');
 	background-size: cover;
 	background-position: center;
+
 }
 .card-pic-holder{
 	position: relative;
