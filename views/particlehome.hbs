@@ -1,7 +1,5 @@
- <div id="video-wrapper" class="container-fluid" data-vide-bg="video/1">
- 	
- </div>
- <nav>
+<div id="particles-js"></div>
+<nav>
  	<div class="container-fluid">
  		<ul id="nav-ul">
  			<li id="brand-name-li">BlogChain</li>
@@ -21,18 +19,23 @@
 	 		Get Started
 	 	</button>
 	 </div>
+
+	 <div class="footer">
+		<p class="foot">Made with <i class="fa fa-heart" aria-hidden="true" style="color:#be1931"></i> by 	TEAM 16</p>
+	</div>
  </nav>
   
-
-
-<div class="footer">
-	<p class="foot">Made with <i class="fa fa-heart" aria-hidden="true" style="color:#be1931"></i> by TEAM 16</p>
-</div>
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="/js/jquery.vide.js"></script>
 <script>window.jQuery || document.write('<script src="/js/jquery.js"><\/script>')</script>
 <script src="/js/popper.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
+
+
+<script src="/js/particles.js"></script>
+
+<script type="text/javascript">
+	particlesJS.load('particles-js', '/assets/particlesjs-config.json', function() {
+	  console.log('callback - particles.js config loaded');
+	});
+</script>

@@ -71,6 +71,11 @@ app.get('/dashboard', function(req, res){
 
 });
 
+app.get('/particlehome', function(req, res){
+  res.render("particlehome");
+
+});
+
 app.get('/:userid/home',function(req,res){
   if(req.params.userid == req.session.username)
   {
