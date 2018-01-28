@@ -203,3 +203,70 @@ nav{
 		z-index: 100;
 	}
 }
+
+
+
+/*blog_user_profile.hbs specific css*/
+
+
+@media (min-width: 720px)
+{
+	#user-profile-wrapper
+	{
+		width: 70%;
+		margin-left: 15%;
+		margin-right: 15%
+	}
+}
+
+@media (min-width: 1068px)
+{
+	#user-profile-wrapper
+	{
+		width: 50%;
+		margin-left: 25%;
+		margin-right: 25%
+	}
+}
+
+#user-profile-wrapper{
+	
+	padding-top: 24px;
+	/*background: #777;*/
+}
+
+#user-profile-info-card{
+	position: relative;
+	padding: 24px 0;
+	/*background: yellow;*/
+	width: 100%;
+	/*margin-bottom: 10px;*/
+}
+#left-info{
+	/*float: left;*/
+	/*padding-left: 16px;*/
+	width: 80%;
+}
+#user-profile-info-card img{
+	position: absolute;
+	right: 0;
+	top:16px;
+	width: 110px;
+	height: 110px;
+}
+.profile-card{
+	clear: both;
+	margin-top: 24px;
+}
+.profile-divider{
+	height: 1px;
+	background: #082e7b !important;
+	width: 100%;
+}
+
+#user-following{
+	padding: 16px 0;
+}
+#follow-btn{
+	float: right;
+}

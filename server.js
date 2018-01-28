@@ -81,6 +81,11 @@ app.get('/blog_post', function(req, res){
 
 });
 
+app.get('/blog_user_profile', function(req, res){
+  res.render("blog_user_profile");
+
+});
+
 app.get('/:userid/home',function(req,res){
   if(req.params.userid == req.session.username)
   {
