@@ -217,6 +217,10 @@ nav{
 		margin-left: 15%;
 		margin-right: 15%
 	}
+	.editable{
+		margin-left: 15%;
+		margin-right: 15%
+	}
 }
 
 @media (min-width: 1068px)
@@ -224,6 +228,10 @@ nav{
 	#user-profile-wrapper
 	{
 		width: 50%;
+		margin-left: 25%;
+		margin-right: 25%
+	}
+	.editable{
 		margin-left: 25%;
 		margin-right: 25%
 	}
@@ -269,4 +277,12 @@ nav{
 }
 #follow-btn{
 	float: right;
+}
+
+/*blog_user_stats.hbs specific css*/
+.editable{
+	line-height: 1.58;
+	font-size: 21px;
+	margin-top: 36px;
+	/*background: #96b2ee;*/
 }
