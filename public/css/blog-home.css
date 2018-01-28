@@ -1,0 +1,35 @@
+body {
+  padding-top: 54px;
+}
+
+@media (min-width: 992px) {
+  body {
+    padding-top: 56px;
+  }
+}
+
+.jumbotron, .card-header, .card-footer{
+	background: #2c6cf0;
+	color: #fafbfb;
+	/*background: linear-gradient(315deg, rgba(67, 83, 255, 0) 33%, rgba(67, 83, 255, .25)) !important;*/
+}
+.bg-dark{
+	color: #fafbfb !important;
+	background: #082e7b !important;
+}
+.text-muted{
+	color: #fafbfb !important;
+}
+a{
+	color: #96b2ee;
+}
+a:hover{
+	color: #082e7b;
+}
+.card{
+	border-color: #082e7b !important;
+	box-shadow: -4px 4px 10px #96b2ee;
+}
+.card:hover{
+	box-shadow: -1px 1px 5px #96b2ee;
+}

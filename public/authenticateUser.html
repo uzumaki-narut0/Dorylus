@@ -3,13 +3,19 @@
 <head>
 	<title>Signup | Login</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
 	<script src="/js/jquery.js"></script>
 	<script src="/js/bootstrap.js"></script>
 	<script src="https://use.fontawesome.com/795dd48394.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Lato:300, 400" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500" rel="stylesheet"> 
 	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
 		#page-wrapper{
 			font-family: 'Raleway', sans-serif;
 			color: #fff;
@@ -82,14 +88,18 @@
 			padding: 32px 32px;
 		}
 		h1{
+			font-family: 'Raleway', sans-serif;
+			font-weight: 400;
 			margin-bottom: 5px;
 		}
 		h2{
+			font-family: 'Raleway', sans-serif;
 			margin-top: 5px;
 			font-weight: 400;
 			margin-bottom: 7.5vh;
 		}
 		input{
+			color: #fafbfb;
 			font-family: 'Lato', sans-serif;
 			font-size: 18px;
 			width: 75%;
@@ -110,14 +120,24 @@
 			z-index: 2000;
 			box-shadow: -3px 3px 5px rgba(20, 60, 92, 0.9);
 		}
-		@keyframes flipback{
-			from{
-				transform: translate3d(0,0,0);
-			}
-			to{
-				transform:translate3d(-100%, 0, -100%); 
-			}
+		body{
+			position: relative;
 		}
+		canvas{
+	      display:block;
+	      vertical-align:bottom;
+	    }
+		#particles-js{
+			position: absolute;
+			top: 0;
+	      width: 100%;
+	      height: 100%;
+	      /*background:black;*/
+	      background-image: url('');
+	      background-size: cover;
+	      background-position: 50% 50%;
+	      background-repeat: no-repeat;
+	    }
 	</style>
 </head>
 <body>

@@ -2,7 +2,7 @@
 <html>
 <head> 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
   <script src="/js/jquery.js"></script>
   <script src="/js/bootstrap.js"></script>
   <script src="https://use.fontawesome.com/795dd48394.js"></script>
@@ -10,6 +10,36 @@
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500" rel="stylesheet"> 
   <link rel="stylesheet" type="text/css" href="/css/style.css">
   <link rel="stylesheet" type="text/css" href="/css/particles.css">
+  <style type="text/css">
+    html,body{ 
+      font-size: 16px;
+      width:100%;
+      height:100%;
+      background:linear-gradient(135deg, #5b247a 0%,#1bcedf 100%);
+    }
+
+    html{
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    }
+
+    canvas{
+      display:block;
+      vertical-align:bottom;
+    }
+
+
+    /* ---- particles.js container ---- */
+
+    #particles-js{
+      width: 100%;
+      height: 100%;
+      /*background:black;*/
+      background-image: url('');
+      background-size: cover;
+      background-position: 50% 50%;
+      background-repeat: no-repeat;
+    }
+  </style>
 </head>
 <body>
   <div id="particles-js"></div>
@@ -29,8 +59,8 @@
          <div id="site-overview">
           BlogChain is a decentralized content reward platform driven by the power of Ethereum Blockchain. Establishing Tsukiyomi (an ERC20 token) allows us to create a common platform and value system to rally a community around. 
         </div>
-        <button class="btn btn-danger" id="start-btn">
-          Get Started
+        <button class="btn btn-primary btn-lg" id="start-btn">
+          Get Started &rarr;
         </button>
        </div>
 

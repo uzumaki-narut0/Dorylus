@@ -71,8 +71,13 @@ app.get('/dashboard', function(req, res){
 
 });
 
-app.get('/particlehome', function(req, res){
-  res.render("particlehome");
+app.get('/blog_home', function(req, res){
+  res.render("blog_home");
+
+});
+
+app.get('/blog_post', function(req, res){
+  res.render("blog_post");
 
 });
 
