@@ -1,5 +1,5 @@
 <script src="js/medium-editor.min.js"></script>
-
+<script src="js/ipfs-mini.js"></script>
 <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
@@ -43,4 +43,45 @@
 <div class="editable">
 
 </div>
-<script>var editor = new MediumEditor('.editable');</script>	
+<button type="button" class="btn btn-primary" id="create-blog-btn">Create Blog</button>
+<script>var editor = new MediumEditor('.editable');</script>
+<script type="text/javascript">
+  $('#create-blog-btn').on('click', function(){
+    // var IPFS = require('ipfs-mini');
+    var ipfs = new IPFS({host: 'ipfs.infura.io', port: 5001, protocol: 'https'});
+    var blogData = $('.editable').text();
+    console.log(blogData);
+    ipfs.add(blogData, function(err, hash){
+     if (err) {
+       return console.log(err);
+     }
+     console.log('HASH:', hash);
+     // Initialize Web3
+      if (typeof web3 !== 'undefined') {
+        web3 = new Web3(web3.currentProvider);
+      } else {
+        web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:7545'));
+      }
+
+      // Set Account
+      web3.eth.defaultAccount = web3.eth.accounts[0];
+
+      // Set Contract Abi
+      var contractAbi = [
+        
+      ]; 
+
+      // Set Contract Address
+      var contractAddress = '0xca762e2fefe6f6f9a403c59558e7946ea24f897f'; 
+
+      // Set the Contract
+      var contract = web3.eth.contract(contractAbi).at(contractAddress);
+
+      // bind ipfs reference to creator's public address
+      contract.bind(hash,function(err) {
+        // $('#candidateName').html(candidateName);
+      });
+
+    });
+  });
+</script>	
