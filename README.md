@@ -12,3 +12,4 @@ Viewers can tip off the writers for the blogs they published. The platform estab
 ## Open Source Contributions
 Feel free to add suggestions and contribute to the app.
 
+**Work in Progress!!**
