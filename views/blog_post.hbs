@@ -1,3 +1,4 @@
+<script src="/js/ipfs-mini.js"></script>    
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
@@ -27,7 +28,7 @@
     </nav>
 
     <!-- Page Content -->
-    <div class="container">
+    <div class="container" >
 
       <div class="row">
 
@@ -56,22 +57,12 @@
           <hr>
 
           <!-- Post Content -->
-          <p class="lead">The stupendous growth of bitcoin and altcoins over the last year has left the world wondering what massive potential it holds. People are investing a good deal of their money in many of these cryptocurrencies, unaware of the underlying vision or the team behind it. </p>
+          <p class="lead" id="post-div">The stupendous growth of bitcoin and altcoins over the last year has left the world wondering what massive potential it holds. People are investing a good deal of their money in many of these cryptocurrencies, unaware of the underlying vision or the team behind it. </p>
 
-          <p>In this post, I would like to introduce some of the undervalued projects which are working on introducing new technological innovation instead of the projects which are introduced with the sole purpose of marketing (shitcoins) and are worthless on the innovation criteria.</p>
+          <hr>
 
-          <p>I don’t claim that these cryptocurrencies will explode in 2018. What I am trying to do, is give you an insight of these beautifully thought ideas and the rigorous efforts their team is putting in to make their project a huge success and take a step forward to the decentralized era.</p>
-
-          <blockquote class="blockquote">
-            <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-            <footer class="blockquote-footer">Someone famous in
-              <cite title="Source Title">Source Title</cite>
-            </footer>
-          </blockquote>
-
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error, nostrum, aliquid, animi, ut quas placeat totam sunt tempora commodi nihil ullam alias modi dicta saepe minima ab quo voluptatem obcaecati?</p>
-
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, dolor quis. Sunt, ut, explicabo, aliquam tenetur ratione tempore quidem voluptates cupiditate voluptas illo saepe quaerat numquam recusandae? Qui, necessitatibus, est!</p>
+          <!-- Date/Time -->
+          <button type="button" class="btn btn-primary btn-block" id="upvote-btn">Upvote</button>
 
           <hr>
 
@@ -201,4 +192,52 @@
     </footer>
 
     <!-- Bootstrap core JavaScript -->
-    <script src="s/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/web3.min.js"></script>
+
+    <script type="text/javascript">
+      if (typeof web3 !== 'undefined') {
+        web3 = new Web3(web3.currentProvider);
+        } else {
+        web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:7545'));
+      }
+
+      // Set Account
+      web3.eth.defaultAccount = web3.eth.accounts[0];
+
+      // Set Contract Abi
+      var contractAbi = [
+        
+      ]; 
+
+      // Set Contract Address
+      var contractAddress = ''; 
+
+      // Set the Contract
+      var contract = web3.eth.contract(contractAbi).at(contractAddress);
+
+      var content_ref = "{{blog_hash}}";
+      //fetch data from ipfs with the given blog_hash
+      const ipfs = new IPFS({host: 'ipfs.infura.io', port: 5001, protocol: 'https'});
+      const hash = content_ref;
+      ipfs.cat(hash, (err, data) => {
+       if (err) {
+         return console.log(err);
+       }
+       
+       console.log('DATA:', data);
+       //put the data into post-div
+       $('#post-div').text(data);
+      });
+      
+
+
+      //on upvote, transfer the funds from consumer to creator 
+      $('#upvote-btn').on('click', function(){
+        // pay to creator's public address
+        contract.payCreator(content_ref,function(err) {
+          console.log('successfully tipped off');
+        });
+
+      });
+    </script>

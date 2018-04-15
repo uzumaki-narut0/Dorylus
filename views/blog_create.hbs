@@ -45,6 +45,7 @@
 </div>
 <button type="button" class="btn btn-primary" id="create-blog-btn">Create Blog</button>
 <script>var editor = new MediumEditor('.editable');</script>
+<script src="js/web3.min.js"></script>
 <script type="text/javascript">
   $('#create-blog-btn').on('click', function(){
     // var IPFS = require('ipfs-mini');
@@ -65,22 +66,109 @@
 
       // Set Account
       web3.eth.defaultAccount = web3.eth.accounts[0];
+      // console.log(web3.toAscii('0x73776170'));
 
       // Set Contract Abi
       var contractAbi = [
-        
-      ]; 
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "getArrayLength",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "content_ref",
+        "type": "string"
+      }
+    ],
+    "name": "payCreator",
+    "outputs": [],
+    "payable": true,
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "content_ref",
+        "type": "string"
+      }
+    ],
+    "name": "getCreatorAddress",
+    "outputs": [
+      {
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "content_ref",
+        "type": "string"
+      }
+    ],
+    "name": "bind",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "idx",
+        "type": "uint256"
+      }
+    ],
+    "name": "getContentRef",
+    "outputs": [
+      {
+        "name": "",
+        "type": "string"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "payable": true,
+    "stateMutability": "payable",
+    "type": "constructor"
+  }
+]; 
 
       // Set Contract Address
-      var contractAddress = '0xca762e2fefe6f6f9a403c59558e7946ea24f897f'; 
+      var contractAddress = '0x884b83ac2f120271f126435503fdeb45e182420c'; 
 
       // Set the Contract
       var contract = web3.eth.contract(contractAbi).at(contractAddress);
 
       // bind ipfs reference to creator's public address
       contract.bind(hash,function(err) {
-        // $('#candidateName').html(candidateName);
+        
       });
+
 
     });
   });
