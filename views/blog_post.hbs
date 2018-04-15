@@ -207,11 +207,96 @@
 
       // Set Contract Abi
       var contractAbi = [
-        
-      ]; 
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "getArrayLength",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "content_ref",
+        "type": "string"
+      }
+    ],
+    "name": "payCreator",
+    "outputs": [],
+    "payable": true,
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "content_ref",
+        "type": "string"
+      }
+    ],
+    "name": "getCreatorAddress",
+    "outputs": [
+      {
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "content_ref",
+        "type": "string"
+      }
+    ],
+    "name": "bind",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "idx",
+        "type": "uint256"
+      }
+    ],
+    "name": "getContentRef",
+    "outputs": [
+      {
+        "name": "",
+        "type": "string"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "payable": true,
+    "stateMutability": "payable",
+    "type": "constructor"
+  }
+]; 
 
       // Set Contract Address
-      var contractAddress = ''; 
+      var contractAddress = '0x884b83ac2f120271f126435503fdeb45e182420c'; 
 
       // Set the Contract
       var contract = web3.eth.contract(contractAbi).at(contractAddress);
@@ -230,12 +315,12 @@
        $('#post-div').text(data);
       });
       
-
-
+      
       //on upvote, transfer the funds from consumer to creator 
       $('#upvote-btn').on('click', function(){
         // pay to creator's public address
-        contract.payCreator(content_ref,function(err) {
+        contract.getCreatorAddress(content_ref,function(err, creator_address) {
+          web3.eth.sendTransaction({ to:creator_address, value:9000,gas:21000}, function(err){});   
           console.log('successfully tipped off');
         });
 
