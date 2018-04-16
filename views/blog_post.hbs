@@ -295,11 +295,69 @@
   }
 ]; 
 
+      //set token Contract ABI
+      var tokenContractAbi = [
+      {
+        "constant": true,
+        "inputs": [
+          {
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "name": "balanceOf",
+        "outputs": [
+          {
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "name": "_to",
+            "type": "address"
+          },
+          {
+            "name": "_value",
+            "type": "uint256"
+          }
+        ],
+        "name": "transfer",
+        "outputs": [],
+        "payable": true,
+        "stateMutability": "payable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "name": "initialSupply",
+            "type": "uint256"
+          }
+        ],
+        "payable": true,
+        "stateMutability": "payable",
+        "type": "constructor"
+      }
+    ];
+
       // Set Contract Address
       var contractAddress = '0x884b83ac2f120271f126435503fdeb45e182420c'; 
 
+      //set token contract address
+      var tokenContractAddress = '0x4e16f8bfad489f82847a804df5beb2c309b1d7ba';
+
       // Set the Contract
       var contract = web3.eth.contract(contractAbi).at(contractAddress);
+
+      //set the token Contract
+      var tokenContract = web3.eth.contract(tokenContractAbi).at(tokenContractAddress);
 
       var content_ref = "{{blog_hash}}";
       //fetch data from ipfs with the given blog_hash
@@ -320,8 +378,13 @@
       $('#upvote-btn').on('click', function(){
         // pay to creator's public address
         contract.getCreatorAddress(content_ref,function(err, creator_address) {
-          web3.eth.sendTransaction({ to:creator_address, value:9000,gas:21000}, function(err){});   
-          console.log('successfully tipped off');
+          // web3.eth.sendTransaction({ to:creator_address, value:9000,gas:21000}, function(err){});   
+
+          //transfer tsukiyomi tokens
+          tokenContract.transfer(creator_address, 20, function(err){
+            console.log('successfully tipped off');
+          });
+          
         });
 
       });
