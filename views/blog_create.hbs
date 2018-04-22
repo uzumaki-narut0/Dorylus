@@ -51,7 +51,7 @@
     // var IPFS = require('ipfs-mini');
     var ipfs = new IPFS({host: 'ipfs.infura.io', port: 5001, protocol: 'https'});
     var blogData = $('.editable').text();
-    console.log(blogData);
+    // console.log(blogData);
     ipfs.add(blogData, function(err, hash){
      if (err) {
        return console.log(err);
@@ -68,55 +68,7 @@
       web3.eth.defaultAccount = web3.eth.accounts[0];
       // console.log(web3.toAscii('0x73776170'));
 
-      // Set Contract Abi
-      var contractAbi = [
-  {
-    "constant": true,
-    "inputs": [],
-    "name": "getArrayLength",
-    "outputs": [
-      {
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      {
-        "name": "content_ref",
-        "type": "string"
-      }
-    ],
-    "name": "payCreator",
-    "outputs": [],
-    "payable": true,
-    "stateMutability": "payable",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [
-      {
-        "name": "content_ref",
-        "type": "string"
-      }
-    ],
-    "name": "getCreatorAddress",
-    "outputs": [
-      {
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
+var contractAbi = [
   {
     "constant": false,
     "inputs": [
@@ -129,6 +81,45 @@
     "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "payable": true,
+    "stateMutability": "payable",
+    "type": "constructor"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "content_ref",
+        "type": "string"
+      }
+    ],
+    "name": "checkOwnership",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "getArrayLength",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
     "type": "function"
   },
   {
@@ -151,22 +142,34 @@
     "type": "function"
   },
   {
-    "inputs": [],
-    "payable": true,
-    "stateMutability": "payable",
-    "type": "constructor"
+    "constant": true,
+    "inputs": [
+      {
+        "name": "content_ref",
+        "type": "string"
+      }
+    ],
+    "name": "getCreatorAddress",
+    "outputs": [
+      {
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
   }
-]; 
-
+];
       // Set Contract Address
-      var contractAddress = '0x884b83ac2f120271f126435503fdeb45e182420c'; 
-
+      var contractAddress = '0x90af16eea7b478408c8797749e7877eec9352075';
+     
       // Set the Contract
       var contract = web3.eth.contract(contractAbi).at(contractAddress);
 
       // bind ipfs reference to creator's public address
       contract.bind(hash,function(err) {
-        
+        console.log('binding done');
       });
 
 
