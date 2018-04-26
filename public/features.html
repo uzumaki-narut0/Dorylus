@@ -59,21 +59,6 @@
 				</p>
 				<br>
 
-				<h2>Work done so far</h2>
-				<div class="divider"></div>
-				<ul type="disc">
-					<li>
-						We have utilized the concepts of web scraping and used python (BeautifulSoup) to generate datasets by scraping the chessboard images from chess.com, lichess.com and some other websites. To dissect a complete chessboard into individual chess pieces, we have used python imaging library PIL.
-					</li>
-					<br>
-					<li>
-						We made use of tensorflow and the concept of hough transform to identify chessboard in any image. Since we are only considering digital images of chessboard from any particular website, we operate on the base assumption that the chessboard will be aligned with the image. We used horizontal and vertical gradient to identify all horizontal and vertical lines in the image and then isolated the lines associated with the chessboard. After identifying the chessboard we split the chessboard into 64 squares for further processing.
-					</li>
-					<br>
-					<li>
-						We have created a image classifier with 12 different classifications for chess pieces of both colors. It is created by training a Convolutional Neural Network with around 50 images of each possible classification. Right now, the accuracy of classification is around 93%. The implementation of CNN is done in Python and we are using Tensorflow for doing fast computations. The model is being trained on cloud instead of local machines as our local machines don’t have enough processing power and training a ConvNet requires quite good processing power.
-					</li>
-
 				</ul>
 			</div>
 		</div>
