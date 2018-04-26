@@ -55,7 +55,7 @@
     var blogData = $('.editable').text();
     // console.log(blogData);
     ipfs.add(blogData, function(err, hash){
-      document.getElementById('qr-code').src = 'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=' + hash;
+      // document.getElementById('qr-code').src = 'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=' + hash;
 
      if (err) {
        return console.log(err);
