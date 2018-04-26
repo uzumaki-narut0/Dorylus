@@ -51,5 +51,5 @@ app.get('/blog_post/:blog_hash',function(req,res){
 
 
 http.listen(portnumber, function () {
-  console.log('Chessbrain server is listening on port!'+portnumber);
+  console.log('Dorylus server is listening on port!'+portnumber);
 })
