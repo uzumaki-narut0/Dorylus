@@ -1,0 +1,19 @@
+<html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<img id="qr-code" src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=hello">
+<form enctype="multipart/form-data" action="http://api.qrserver.com/v1/read-qr-code/" method="POST">
+<!-- MAX_FILE_SIZE (maximum file size in bytes) must precede the file input field used to upload the QR code image -->
+<input type="hidden" name="MAX_FILE_SIZE" value="1048576" />
+<!-- The "name" of the input field has to be "file" as it is the name of the POST parameter -->
+Choose QR code image to read/scan: <input name="file" type="file" />
+<input type="submit" id="submit-btn" value="Read QR code" />
+</form>
+</html>
+<script type="text/javascript">
+	document.getElementById("submit-btn").addEventListener("click", function(event){
+    event.preventDefault()
+});
+	// elem.querySelector('.read-more-btn').href = 'blog_post/'+content_ref;
+</script>

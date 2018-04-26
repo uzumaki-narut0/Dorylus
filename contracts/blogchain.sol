@@ -18,10 +18,6 @@ contract blogChainContract{
         return content_creator_mapping[content_ref];
     }
     
-    function payCreator(string content_ref)public  payable{
-        creator_address = getCreatorAddress(content_ref);
-        creator_address.transfer(msg.value);
-    }
     
     function getArrayLength()public view returns (uint256){
         return content_ref_arr.length;
